@@ -1,0 +1,83 @@
+﻿@model ForumMVC4ForGeeksForLess.Models.TopicModelView
+
+@{
+    ViewBag.Title = "ViewTopic";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row topic-block">
+    <div class="col-md-3 text-center">
+        <img src="data:image/jpeg;base64,@Convert.ToBase64String(@Model.Topic.User.Avatar, 0, @Model.Topic.User.Avatar.Length)" class="img-rounded avatar"/>
+        <h4 class="text-center">Nickname: @Model.Topic.User.Nickname</h4>
+    </div>
+    <div class="col-md-9">
+        <h3>@Model.Topic.Title</h3>
+        <p>Assked: @Model.Topic.Date</p>
+        <p>@Model.Topic.Text</p>
+    </div>
+</div>
+@if (Model.Topic.Messages.Count != 0)
+{
+    <h2>Messages</h2>    
+    foreach (var message in Model.Topic.Messages)
+    {
+        <div class="message-block row">
+            <div class="col-md-3 text-center">
+                <img src="data:image/jpeg;base64,@Convert.ToBase64String(message.User.Avatar, 0, message.User.Avatar.Length)" class="img-rounded avatar "/>
+                <h4 class="text-center">Nickname: @message.User.Nickname</h4>
+            </div>
+            <div class="col-md-9">
+             <h5>
+                Added: @message.Date 
+                @if (@Context.User.Identity.Name == @message.User.Login)
+                {
+                    @Html.ActionLink("Edit", "EditMessage", new { id = message.Id },
+                    new { @class = "viewDialog", data_dialog_title = "Edit message" })
+                }
+            </h5>
+            <hr />
+            <p>@message.TextMessage</p>
+            </div>
+
+        </div>
+    }
+    if (Model.PagingInfo.TotalPages != 1)
+    {
+        <div class="text-center">
+            @Html.PageLinks(Model.PagingInfo, x => Url.Action("ViewTopic", new { page = x }))
+        </div> 
+    }
+
+}
+else
+{
+    <h2 class="text-center">No messages</h2>
+}
+@if (@Context.User.Identity.IsAuthenticated)
+{
+    Html.RenderAction("CreateMessage", new ForumMVC4ForGeeksForLess.Models.CreateMessageModelView());
+}
+
+ <script>
+    $(document).ready(function () {
+ 
+        $.ajaxSetup({ cache: false });
+ 
+        $(".viewDialog").on("click", function (e) {
+            e.preventDefault();
+ 
+            $("<div></div>")
+                .addClass("dialog")
+                .appendTo($(".body"))
+                .dialog({
+                    height: "auto",
+                    width: 500,
+                    title: $(this).attr("data-dialog-title"),
+                     close: function () { $(this).remove() },
+                     modal: false
+                })
+                .load(this.href);
+        });
+    });
+    </script>
+
+

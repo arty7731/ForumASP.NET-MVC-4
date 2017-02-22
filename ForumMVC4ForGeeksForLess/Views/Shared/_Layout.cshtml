@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body class="body">
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            @Html.ActionLink("Forum for GeeksForLess", "Index", "Home", null, new { @class = "navbar-brand"})
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li></li>
+            @if (ViewContext.HttpContext.User.Identity.IsAuthenticated)
+            {
+                <li>@Html.ActionLink(" SignOut(" + ViewContext.HttpContext.User.Identity.Name + ")",
+                    "SignOut", "Account", null, new { @class = "glyphicon glyphicon-user" })</li>
+            }
+            else
+            {
+                <li>@Html.ActionLink(" Login ", "Login", "Account", null, new { @class = "glyphicon glyphicon-log-in"})</li>
+                <li>@Html.ActionLink(" Registration ", "Registration", "Account", null, new { @class = "glyphicon glyphicon-user" })</li>
+            }
+        </ul>
+    </div>
+</nav>
+    <div class="center-block">
+        @RenderBody()
+    </div>
+   
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

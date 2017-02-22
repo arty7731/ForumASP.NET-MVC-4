@@ -1,0 +1,14 @@
+﻿@model ForumMVC4ForGeeksForLess.Models.CreateMessageModelView
+
+@using (Html.BeginForm("CreateMessage", "Home", Model))
+{
+    <div class ="form-group">
+        <div>
+            @Html.LabelFor(model => model.TextMessage)
+            @Html.TextAreaFor(model => model.TextMessage, new { @class = "form-control messageBox"})
+            @Html.ValidationMessageFor(model => model.TextMessage)
+        </div>
+        <button type="submit" class="btn btn-block btn-primary">Send</button>
+    </div>
+}
+

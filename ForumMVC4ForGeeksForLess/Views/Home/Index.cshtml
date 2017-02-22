@@ -1,0 +1,29 @@
+﻿@using ForumMVC4ForGeeksForLess.Models
+@using ForumMVC4ForGeeksForLess.HtmlHelpers
+@model ForumMVC4ForGeeksForLess.Models.TopicListModelView
+
+@{
+    ViewBag.Title = "Forum MVC4";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (Context.User.Identity.IsAuthenticated)
+{
+    @Html.ActionLink("New topic", "NewTopic", "Home", null, new{@class = "btn btn-block btn-default"})
+}
+@foreach (var t in @Model.Topics)
+{
+    <div class="row topic-block">
+        <h3>@Html.ActionLink(@t.Title, "ViewTopic", new { id = @t.Id})</h3>
+        <h5>@t.User.Nickname | Added: @t.Date | Count view: @t.CountView</h5>
+        <hr />
+        <p>@t.Text</p>
+    </div>
+    
+}
+@if (Model.PagingInfo.TotalPages != 1)
+{
+    <div class="text-center">
+        @Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new {page = x}))
+    </div>
+}
+

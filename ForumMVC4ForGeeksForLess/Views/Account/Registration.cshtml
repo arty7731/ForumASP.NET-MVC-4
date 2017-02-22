@@ -1,0 +1,49 @@
+﻿@model ForumMVC4ForGeeksForLess.Models.RegistrationModelView
+
+@{
+    ViewBag.Title = "Registration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="form-group">
+            @Html.LabelFor(model => model.Login)
+            @Html.TextBoxFor(model => model.Login, new { @class="form-control"})
+            @Html.ValidationMessageFor(model => model.Login)
+            @Html.ValidationMessage("loginBusy")
+        </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Nickname)
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.Nickname, new { @class="form-control"})
+        @Html.ValidationMessageFor(model => model.Nickname)
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Password)
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.Password, new {type = "password", @class="form-control"})
+        @Html.ValidationMessageFor(model => model.Password)
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.ConfirmPassword)
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.ConfirmPassword, new {type = "password", @class="form-control"})
+        @Html.ValidationMessageFor(model => model.ConfirmPassword)
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Avatar)
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.Avatar, new { type = "file", @class="form-control"})
+    </div>
+
+    <p>
+        <input type="submit" class="btn btn-primary" value="SignUp"/>
+    </p>
+    }
+</div>

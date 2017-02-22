@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2012 for Web
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForumMVC4ForGeeksForLess", "ForumMVC4ForGeeksForLess\ForumMVC4ForGeeksForLess.csproj", "{19EA628C-0B46-486F-B9F4-81D83E25A3DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForumMVC4ForGeeksForLess.Domain", "ForumMVC4ForGeeksForLess.Domain\ForumMVC4ForGeeksForLess.Domain.csproj", "{BAEED6CA-4BBC-4C4E-A477-4581C1B3E319}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{19EA628C-0B46-486F-B9F4-81D83E25A3DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19EA628C-0B46-486F-B9F4-81D83E25A3DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19EA628C-0B46-486F-B9F4-81D83E25A3DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19EA628C-0B46-486F-B9F4-81D83E25A3DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAEED6CA-4BBC-4C4E-A477-4581C1B3E319}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAEED6CA-4BBC-4C4E-A477-4581C1B3E319}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAEED6CA-4BBC-4C4E-A477-4581C1B3E319}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAEED6CA-4BBC-4C4E-A477-4581C1B3E319}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

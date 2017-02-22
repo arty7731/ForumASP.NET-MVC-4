@@ -1,0 +1,39 @@
+﻿@model ForumMVC4ForGeeksForLess.Models.CreateTopicModelView
+
+@{
+    ViewBag.Title = "NewTopic";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>NewTopic</h2>
+
+@using (Html.BeginForm()) {
+
+    <fieldset>
+        <legend>Topic</legend>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title)
+            @Html.TextBoxFor(model => model.Title, new {@class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Title)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Text)
+            @Html.TextAreaFor(model => model.Text, new {@class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Text)
+        </div>
+
+        <p>
+            <input type="submit" class="btn bnt-primary" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

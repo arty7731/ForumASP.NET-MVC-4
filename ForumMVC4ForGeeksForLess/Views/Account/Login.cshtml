@@ -1,0 +1,40 @@
+﻿@model ForumMVC4ForGeeksForLess.Models.LoginModelView
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <h3>Enter your Login and Password for authorization</h3>
+    @using (Html.BeginForm())
+    {
+        <fieldset>
+            <legend>SignIn</legend>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Login)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Login, new { @class="form-control"})
+                @Html.ValidationMessageFor(model => model.Login)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Password)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Password, new {type = "password", @class="form-control"})
+                @Html.ValidationMessage("ValidationError")
+            </div>
+
+            <div class="editor-field">
+                @Html.CheckBoxFor(model => model.RememberMe, new { @class="checkbox"})
+                @Html.LabelFor(model => model.RememberMe)
+            </div>
+            <p>
+                <input type="submit" class="btn btn-primary" value="SignIn" />
+            </p>
+        </fieldset>
+    }
+</div>
+

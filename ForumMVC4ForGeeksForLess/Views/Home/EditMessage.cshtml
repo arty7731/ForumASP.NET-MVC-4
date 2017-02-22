@@ -1,0 +1,30 @@
+﻿@model ForumMVC4ForGeeksForLess.Domain.Entities.Message
+
+<div>
+    @if (ViewBag.MessageError != null)
+    {
+        <h3>@ViewBag.MessageError</h3>
+    }
+    else
+    {
+        using(Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model.TopicId)
+            @Html.HiddenFor(model => model.UserId)
+            @Html.HiddenFor(model => model.Date)
+
+            <div class="form-group modalView">
+                @Html.LabelFor(model => model.TextMessage)
+                <p>@Html.TextAreaFor(model => model.TextMessage, new { @class = "form-control" })</p>
+            </div>
+            <p>
+                <input type="submit" class="btn btn-success" value="Save" />
+                <button id="cancel" class="btn btn-danger">Cancel</button>
+            </p>
+        
+        }        
+    }
+
+</div>
